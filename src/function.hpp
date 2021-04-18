@@ -305,11 +305,11 @@ public: // modifiers
   Function&
   append(const Block& value)
   {
-    if (value.type() == tlv::NameComponent) {
+    if (value.type() == tlv::GenericNameComponent) {
       m_wire.push_back(value);
     }
     else {
-      m_wire.push_back(Block(tlv::NameComponent, value));
+      m_wire.push_back(Block(tlv::GenericNameComponent, value));
     }
 
     return *this;

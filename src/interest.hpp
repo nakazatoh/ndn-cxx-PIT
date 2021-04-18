@@ -22,6 +22,7 @@
 #ifndef NDN_INTEREST_HPP
 #define NDN_INTEREST_HPP
 
+#include <memory>
 #include "delegation-list.hpp"
 #include "name.hpp"
 #include "function.hpp"
@@ -123,6 +124,9 @@ public: // matching
   bool
   matchesData(const Data& data) const;
 
+  bool
+  matchesDataWFunction(const Data& data) const;
+
   /**
    * @brief Check if Interest matches @p other interest
    *
@@ -134,6 +138,9 @@ public: // matching
    */
   bool
   matchesInterest(const Interest& other) const;
+
+  bool
+  matchesInterestWFunction(const Interest& other) const;
 
   void
   removeHeadFunction() const;
@@ -172,6 +179,10 @@ public: // Name, Nonce, and Guiders
   {
     return m_function.toUri() != "/" ? true : false;
   }
+
+  unique_ptr<Name>
+  getNameFunction() const;
+
   /** @brief Check if Nonce set
    */
   bool
