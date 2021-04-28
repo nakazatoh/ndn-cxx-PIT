@@ -296,11 +296,10 @@ Interest::matchesData(const Data& data) const
 bool
 Interest::matchesDataWFunction(const Data& data) const
 {
-  if (hasFunction() != data.hasFunction())
-  {
+  if (hasFunction() != data.hasFunction()) {
     return false;
   }
-  if (m_function == data.getFunction())
+  if (!hasFunction() || (m_function == data.getFunction()))
   {
     return matchesData(data);
   }
